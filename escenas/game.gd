@@ -7,6 +7,7 @@ var enemies = 0
 var mobs = 0
 var start = true
 func _ready():
+	%Pause.visible = false
 	%Gamestart.visible = true
 	get_tree().paused = true
 	spawn_mob()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://chvvw3lntqbug"]
+[gd_scene load_steps=9 format=3 uid="uid://chvvw3lntqbug"]
 
 [ext_resource type="PackedScene" uid="uid://cl22ggaym5eui" path="res://escenas/player.tscn" id="1_bp5up"]
 [ext_resource type="Script" uid="uid://cbnfdau5hr5he" path="res://escenas/game.gd" id="1_l5nui"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ciith8xm4fqln" path="res://escenas/enemy.tscn" id="3_l5nui"]
 [ext_resource type="Script" uid="uid://dk0tc1ovges1d" path="res://scripts/life.gd" id="4_bxxmx"]
 [ext_resource type="Script" uid="uid://vw6pwjlwnhag" path="res://escenas/gamestart.gd" id="6_i3uue"]
+[ext_resource type="Script" uid="uid://yjnd5j1xlag" path="res://escenas/pause.gd" id="7_ykol0"]
+
+[sub_resource type="SystemFont" id="SystemFont_ykol0"]
 
 [node name="game" type="Node2D"]
 process_mode = 1
@@ -108,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1, 0.1, 0.1, 0.368627)
 
-[node name="gameova" type="Label" parent="Gamestart/ColorRect"]
+[node name="gamestart" type="Label" parent="Gamestart/ColorRect"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -122,6 +125,36 @@ theme_override_font_sizes/font_size = 75
 text = "BIENVENIDO AL TILINJUEGO
 PARA EMPEZAR PRESIONA 
 CUALQUIER TECLA"
+horizontal_alignment = 1
+
+[node name="Pause" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("7_ykol0")
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.1, 0.368627)
+
+[node name="pausa" type="Label" parent="Pause/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -504.0
+offset_right = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_ykol0")
+theme_override_font_sizes/font_size = 75
+text = "Juego pausado
+presiona 
+cualquier tecla para continuar"
 horizontal_alignment = 1
 
 [connection signal="attacked" from="Player" to="Life" method="_on_player_attacked"]
