@@ -5,12 +5,16 @@ signal numofbullets
 signal specialattack
 var enemies = 0
 var mobs = 0
+var start = true
 func _ready():
+	%Gamestart.visible = true
+	get_tree().paused = true
 	spawn_mob()
 	$enemy.player=($Player)
 	$Diff.start()
 	$Life.player=($Player)
 	$Mobs.start()
+
 
 
 
@@ -57,6 +61,11 @@ func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().paused = false
 		get_tree().reload_current_scene()
+	if event is InputEventKey:
+		if event.pressed:
+			get_tree().paused = false
+			%Gamestart.visible = false
+
 
 
 func _on_mobs_timeout() -> void:
