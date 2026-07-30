@@ -29,18 +29,7 @@ func _ready():
 
 
 
-func _physics_process(delta):
-	rotation = lerp_angle(rotation, rotation_new, delta * 2.0)
 
-	if target_position != Vector2.ZERO:
-		var direction = (target_position - global_position).normalized()
-		position += direction * speed * delta
-
-		if global_position.distance_to(target_position) < 22.0:
-			target_position = Vector2.ZERO
-
-			if !$VisibleOnScreenNotifier2D.is_on_screen():
-				go_to_player()
 
 
 func _on_timer_timeout() -> void:

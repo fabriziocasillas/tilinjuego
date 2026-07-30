@@ -77,3 +77,9 @@ func _on_mobs_timeout() -> void:
 	mobs = randi()% 10 + 1
 	for x in mobs:
 		spawn_mob()
+
+
+func _on_punish_timeout() -> void:
+	$Punish.wait_time = randi() % 6 + 5
+	print("punsih calleado, y sera llamado dentro de ", $Punish.wait_time, " segundos")
+	$Punish.start()
