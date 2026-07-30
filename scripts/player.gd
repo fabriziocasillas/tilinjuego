@@ -12,6 +12,7 @@ var dash_duration := 0.2
 var dash_timer := 0.0
 var can_dash := true
 var dash_cooldown := 1.0
+var dash_force := 2000
 
 
 
@@ -20,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if is_dashing:
-		velocity = direction * 1000
+		velocity = direction * dash_force
 		dash_timer -= delta
 		if dash_timer <= 0.0:
 			is_dashing = false
