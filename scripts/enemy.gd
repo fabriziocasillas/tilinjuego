@@ -18,7 +18,6 @@ var rotation_new = 0
 
 func _ready():
 	randomize()
-	go_to_screen_random()
 	await get_tree().create_timer(5).timeout
 	_on_visible_on_screen_notifier_2d_screen_exited()
 	add_to_group("enemigos")
@@ -29,7 +28,14 @@ func _ready():
 
 
 
+func _physics_process(delta):
+	rotation = lerp_angle(self.rotation, rotation_new, delta * 2.0) 
+	if target_position != Vector2.ZERO:
+		var direction = (target_position - global_position).normalized()
+		position += direction * speed * delta
 
+		if global_position.distance_to(target_position) < 22.0:
+			target_position = Vector2.ZERO
 
 
 func _on_timer_timeout() -> void:

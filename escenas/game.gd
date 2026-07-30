@@ -30,6 +30,13 @@ func spawn_enemy():
 	var enemy = preload("res://escenas/enemy.tscn").instantiate()
 	enemy.player = $Player
 	add_child(enemy)
+	
+#load a hagel
+func spawn_hagel():
+	var hagel = preload("res://escenas/hagel.tscn").instantiate()
+	hagel.player = $Player
+	add_child(hagel)
+	
 
 
 ## everytime the timeout sends a signal the enemies either highten their difficulty, speed up 
@@ -83,3 +90,4 @@ func _on_punish_timeout() -> void:
 	$Punish.wait_time = randi() % 6 + 5
 	print("punsih calleado, y sera llamado dentro de ", $Punish.wait_time, " segundos")
 	$Punish.start()
+	spawn_hagel()
