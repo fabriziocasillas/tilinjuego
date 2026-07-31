@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnhxgg7q7lgu"]
+
+[ext_resource type="AudioStream" path="res://music/" id="1_rn55j"]
+[ext_resource type="Script" uid="uid://cw8gsyom4sa0a" path="res://scripts/musicplayer.gd" id="4_aafyj"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_rn55j")
+autoplay = true
+script = ExtResource("4_aafyj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

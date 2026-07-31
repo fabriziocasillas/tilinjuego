@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://chvvw3lntqbug"]
+[gd_scene load_steps=10 format=3 uid="uid://chvvw3lntqbug"]
 
 [ext_resource type="PackedScene" uid="uid://cl22ggaym5eui" path="res://escenas/player.tscn" id="1_bp5up"]
 [ext_resource type="Script" uid="uid://cbnfdau5hr5he" path="res://escenas/game.gd" id="1_l5nui"]
+[ext_resource type="PackedScene" uid="uid://dnhxgg7q7lgu" path="res://escenas/music_player.tscn" id="2_klex5"]
 [ext_resource type="Texture2D" uid="uid://bi8ichugugt1i" path="res://sprites/New Piskel.png" id="2_oyqkt"]
 [ext_resource type="PackedScene" uid="uid://ciith8xm4fqln" path="res://escenas/enemy.tscn" id="3_l5nui"]
 [ext_resource type="Script" uid="uid://dk0tc1ovges1d" path="res://scripts/life.gd" id="4_bxxmx"]
@@ -30,6 +31,10 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_bp5up")]
 position = Vector2(1152, 669)
+
+[node name="MusicPlayer" parent="Player" instance=ExtResource("2_klex5")]
+position = Vector2(-1152, -669)
+autoplay = true
 
 [node name="enemy" parent="." instance=ExtResource("3_l5nui")]
 process_mode = 1
@@ -161,8 +166,6 @@ presiona
 cualquier tecla para continuar"
 horizontal_alignment = 1
 
-[connection signal="attacked" from="Player" to="Life" method="_on_player_attacked"]
-[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Diff" to="." method="_on_diff_timeout"]
 [connection signal="timeout" from="Enemies" to="." method="_on_enemies_timeout"]
 [connection signal="timeout" from="Punish" to="." method="_on_punish_timeout"]
